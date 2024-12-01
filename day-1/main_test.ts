@@ -8,10 +8,10 @@ const input = `3   4
 3   9
 3   3`;
 
-Deno.test(function test() {
+Deno.test(function test(): void {
   assertEquals(solution(input), 11n);
 });
 
-Deno.test(function simularityScoreTest() {
+Deno.test(function simularityScoreTest(): void {
   assertEquals(simularityScore(input), 31n);
 });
