@@ -27,3 +27,28 @@ export function solution(input: string): bigint {
 
   return result;
 }
+
+export function simularityScore(input: string): bigint {
+  const lines = input.split("\n");
+
+  const unorderedPairs = lines
+    .filter((line) => line.trim() !== "")
+    .map((line) =>
+      line
+        .split("   ")
+        .map((element) => BigInt(parseInt(element)))
+    );
+
+  const list1 = unorderedPairs.map((pair) => pair[0]).sort((a, b) =>
+    Number(a - b)
+  );
+  const list2 = unorderedPairs.map((pair) => pair[1]).sort((a, b) =>
+    Number(a - b)
+  );
+
+  const result = list1.map((element) =>
+    element * BigInt(list2.filter((e) => e === element).length)
+  ).reduce((p, c) => p + c);
+
+  return result;
+}
